@@ -147,15 +147,23 @@ for i in range(num_images):
 plt.tight_layout()
 plt.show()
 
-# A random 25 predicitons/images in the test datatset
-#data_test_list = list(zip(test_images, test_labels))
-#test_samples = random.sample(data_test_list, 25)
+# A random 25 predicitons/images/labels in the test datatset
+data_test_list = list(zip(test_images, test_labels, predictions))
+test_samples = random.sample(data_test_list, 20)
+sub1, sub2, sub3 = zip(*test_samples)
 
+num_rows = 5
+num_cols = 4
+num_images = num_rows*num_cols
+plt.figure(figsize=(2*2*num_cols, 2*num_rows))
+for i in range(num_images):
+    plt.subplot(num_rows, 2*num_cols, 2*i+1)
+    plot_image(i, sub3[i], sub2, sub1)
+    plt.subplot(num_rows, 2*num_cols, 2*i+2)
+    plot_value_array(i, sub3[i], sub2)
 
-#unzipped = zip(test_samples)
-#test_images = unzipped[0]
-#test_labels = unzipped[1]
-#test_samples = np.array(test_samples)
+plt.tight_layout()
+plt.show()
 
 
  # Using trained model
